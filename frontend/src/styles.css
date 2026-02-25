@@ -1,0 +1,531 @@
+:root {
+  --bg: #1B1B2F;
+  --panel: #2E2E4D;
+  --panel-soft: #34345a;
+  --text: #F5F5F5;
+  --muted: #cdcede;
+  --accent: #FF9F1C;
+  --hover: #FFC300;
+  --chart-a: #FF9F1C;
+  --chart-b: #FF6B6B;
+  --line: #4a4a75;
+  --shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(circle at top, #28284a 0%, var(--bg) 45%);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.auth-shell,
+.app-shell {
+  min-height: 100vh;
+}
+
+.screen-center {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+}
+
+.auth-shell {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.auth-panel {
+  width: min(520px, 100%);
+  background: var(--panel);
+  border: 1px solid #555589;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 1rem;
+}
+
+.auth-panel h1 {
+  color: var(--text);
+}
+
+.auth-panel p {
+  color: var(--muted);
+}
+
+.app-nav {
+  position: relative;
+  border-bottom: 1px solid #505082;
+  background: linear-gradient(120deg, #2a2a46, #22223a);
+}
+
+/* Decorative side accents requested for header. */
+.app-nav::before,
+.app-nav::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(180deg, transparent 0%, #FFC300 30%, transparent 100%);
+}
+
+.app-nav::before {
+  left: 16px;
+}
+
+.app-nav::after {
+  right: 16px;
+}
+
+.nav-inner {
+  width: min(1400px, 94%);
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.nav-left h1 {
+  font-size: 1.15rem;
+  color: var(--text);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.user-badge {
+  display: inline-block;
+  border: 1px solid #64649a;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  color: var(--text);
+  background: #252541;
+}
+
+.app-main {
+  width: min(1400px, 94%);
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid #59598e;
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.grid-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.grid-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+input,
+select,
+textarea,
+button {
+  border: 1px solid #66669d;
+  border-radius: 10px;
+  padding: 0.65rem 0.7rem;
+  background: #262643;
+  color: var(--text);
+  transition: all 0.22s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #FFC300;
+  box-shadow: 0 0 0 3px rgba(255, 195, 0, 0.2);
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: #FF9F1C;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+button:hover {
+  background: #FFC300;
+  border-color: #FFC300;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.text-btn {
+  background: transparent;
+  border: 1px solid #7474ae;
+  color: var(--text);
+}
+
+.text-btn:hover {
+  background: rgba(255, 195, 0, 0.14);
+}
+
+.danger-btn {
+  background: #FF9F1C;
+}
+
+.error-box {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ffe8e8;
+  border: 1px solid rgba(255, 195, 0, 0.55);
+  padding: 0.65rem;
+  border-radius: 10px;
+}
+
+/* Dashboard cards stay in one row on desktop as requested. */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.metric-panel {
+  background: var(--panel);
+  border: 1px solid #59598e;
+  border-radius: 14px;
+  padding: 0.9rem;
+  box-shadow: var(--shadow);
+}
+
+.metric-panel h3 {
+  margin-bottom: 0.6rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.chart-wrap {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  background: #252541;
+  border: 1px solid #606097;
+  padding: 0.3rem 0.2rem;
+}
+
+.stat-card {
+  margin-top: 0.7rem;
+  border: 1px solid #63639b;
+  border-radius: 10px;
+  padding: 0.7rem;
+  background: var(--panel-soft);
+}
+
+.stat-card h4 {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.stat-card strong {
+  color: var(--text);
+  font-size: 1.15rem;
+}
+
+.filters-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filters-row label {
+  display: grid;
+  gap: 0.3rem;
+  color: var(--text);
+}
+
+.filters-row select:hover {
+  border-color: #FFC300;
+}
+
+.trip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.9rem;
+}
+
+.trip-card {
+  background: var(--panel);
+  border: 1px solid #5a5a8d;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: cardFadeIn 260ms ease both;
+}
+
+.trip-card:hover {
+  transform: translateY(-2px);
+  border-color: #FFC300;
+  box-shadow: 0 12px 24px rgba(255, 195, 0, 0.24);
+}
+
+.trip-image {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.trip-content {
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.trip-content h3 {
+  color: var(--text);
+}
+
+.trip-meta {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.trip-meta span {
+  background: #262643;
+  border: 1px solid #6a6aa1;
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.86rem;
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.row-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* Modal blur layer + scale animation requested for add/edit form. */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 34, 0.58);
+  backdrop-filter: blur(9px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  padding: 1rem 1rem 2rem;
+  overflow-y: auto;
+  animation: fadeIn 200ms ease;
+}
+
+.modal-container {
+  position: relative;
+  width: min(900px, 97%);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  animation: scaleIn 220ms ease;
+}
+
+.modal-container .panel {
+  border-radius: 16px;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  padding-bottom: 1.2rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: #35355a;
+  border: 1px solid #7575b2;
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  align-items: center;
+}
+
+.modal-close:hover {
+  border-color: #FFC300;
+  background: #414169;
+}
+
+.map-panel h2 {
+  margin-bottom: 0.8rem;
+}
+
+.map-wrap {
+  border-radius: 14px;
+  border: 1px solid #606097;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.trip-map {
+  width: 100%;
+  height: 420px;
+}
+
+/* Dark, mountain-themed marker icon. */
+.mountain-marker {
+  background: #2E2E4D;
+  border: 1px solid #FFC300;
+  border-radius: 999px;
+  color: #FF9F1C;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+  display: grid;
+  place-items: center;
+}
+
+.marker-glyph {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #2E2E4D;
+  color: #F5F5F5;
+  border: 1px solid #606097;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.leaflet-popup-tip {
+  background: #2E2E4D;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  color: #FFC300;
+}
+
+.popup-content {
+  min-width: 180px;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.popup-content h3 {
+  font-size: 1rem;
+}
+
+.popup-content p {
+  color: #d5d5e4;
+  font-size: 0.9rem;
+}
+
+.popup-image {
+  width: 100%;
+  max-height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #6767a5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1180px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .nav-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .app-main,
+  .nav-inner {
+    width: min(1400px, 95%);
+  }
+
+  .trip-map {
+    height: 320px;
+  }
+}
